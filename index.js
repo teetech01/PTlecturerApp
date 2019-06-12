@@ -43,7 +43,7 @@ function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
+  y = x[currentTab].getElementsByClassName("validate");
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
@@ -71,7 +71,7 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 (function setOnInput(){
-  var input = document.getElementsByTagName("input");
+  var input = document.getElementsByClassName("validate");
   for (var i = 0; i < input.length; i++) {
     ci = input[i];
     var att = document.createAttribute("oninput");
