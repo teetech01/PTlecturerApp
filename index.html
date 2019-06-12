@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <title>APPLICATION FORM</title>
+</head>
+
+<body>
+    <h1>APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
+
+    <form id="regForm" action="includes/apply.inc.php" method="post">
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="usr">Department Desired:</label>
+                        <input type="text" class="form-control" name="desire_department">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="usr">Session:</label>
+                        <input type="text" class="form-control" name="session">
+                    </div>
+                </div>
+            </div>
+            <p><u>PERSONAL INFORMATION:</u> <small style="color: red;">ALL INFORMATION TO BE COMPLETED IN BLOCK LETTERS
+                    BY THE APPLICANTS</small></p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="usr">Surname:</label>
+                        <input type="text" class="form-control" name="surname">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Email:</label>
+                        <input type="email" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Home Address:</label>
+                        <input type="text" class="form-control" name="home_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Position Held:</label>
+                        <input type="text" class="form-control" name="position">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Religion:</label>
+                        <input type="text" class="form-control" name="religion">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">State of Origin:</label>
+                        <input type="text" class="form-control" name="state">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Marital Status:</label>
+                        <input type="text" class="form-control" name="marital">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Name of Referee:</label>
+                        <input type="text" class="form-control" name="referee_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Referee Position:</label>
+                        <input type="text" class="form-control" name="referee_position">
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="usr">Othername:</label>
+                        <input type="text" class="form-control" name="othername">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Mobile Phone Number:</label>
+                        <input type="number" class="form-control" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Office Address:</label>
+                        <input type="text" class="form-control" name="office_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Date of Birth:</label>
+                        <input type="text" class="form-control" name="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Nationality:</label>
+                        <input type="text" class="form-control" name="nationality">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Gender:</label>
+                        <input type="text" class="form-control" name="gender">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Name of Spouse:</label>
+                        <input type="text" class="form-control" name="spouse_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Referee Office Address:</label>
+                        <input type="text" class="form-control" name="referee_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Referee Phone Number:</label>
+                        <input type="text" class="form-control" name="referee_phone">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="usr">Name & Address of Next of Kin:</label>
+                <input type="text" class="form-control" name="kin_details">
+            </div>
+        </div>
+
+        <div class="tab">
+            <p><u>EDUCATIONAL BACKGROUND/QUALIFICATIONS:</u> <small style="color: red;">Enter your highest Academic & Professional Qualification</small></p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>ACADEMIC QUALIFICATION:</p>
+                    <div class="form-group">
+                        <label for="usr">Institution:</label>
+                        <input type="text" class="form-control" name="institution">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">From:</label>
+                        <input type="text" class="form-control" name="from">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">To:</label>
+                        <input type="text" class="form-control" name="to">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Qualification:</label>
+                        <input type="text" class="form-control" name="sch_qualification">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Date of Award:</label>
+                        <input type="text" class="form-control" name="sch_award_date">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <p>PROFESSIONAL QUALIFICATION:</p>
+                    <div class="form-group">
+                        <label for="usr">Qualification:</label>
+                        <input type="text" class="form-control" name="pro_qualification">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Awarding Body/Society:</label>
+                        <input type="text" class="form-control" name="awarding_body">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Date of Award:</label>
+                        <input type="text" class="form-control" name="pro_award_date">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab">
+            <p><u>WORKING EXPERIENCE:</u></p>
+        </div>
+        <div class="tab">
+            <p><u>PERSONAL UNDERTAKING:</u></p>
+            <p>
+                I understand that the School operates mostly weekend lecture i.e Friday – Sunday, and I shall make
+                myself available to teach the courses allotted to me within time assigned by the School Authorities.
+                <br>I undertake to invigilate students during Examinations and participate in any marking system that
+                may be adopted by the Polytechnic and submit the graded and marked scripts within the time stipulated by
+                the School authorities.
+                <br>I further understand that the sale of handouts, organizing of private coaching classes and
+                collection of money from students (under any guise/circumstance) are strictly prohibited.
+                <br>I undertake to promptly perform with diligence any official duties as may be assigned to me from
+                time to time.
+                <br>I hereby pledge to abide by all the rules and regulations and to be of good conduct in all my
+                affairs in the school.
+                <br>I hereby undertake to accept any disciplinary measure that may be imposed by the Polytechnic for a
+                breach of its rules and regulations and for providing any incorrect information.
+            </p>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" value="">I Agree the above Terms & Conditions.
+                </label>
+            </div>
+        </div>
+        <!-- BUTTONS -->
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:0px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+
+    </form>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
