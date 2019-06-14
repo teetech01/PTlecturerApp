@@ -17,14 +17,53 @@
 </head>
 
 <body>
+    <script>
+        window.readURL = function(input) {
+            console.log(input.files[0].name);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(150);
+                    $('#passport_filename').attr('value', input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
     <h1>APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
-
+    <div class="row">
+        <div class="col-sm-8">
+        </div>
+        <div class="col-sm-4">
+            <form action="includes/upload.php" method="post" enctype="multipart/form-data">
+                        Select image to upload:<br>
+                        <img id="blah" src="#" />
+                        <br><input type="file" name="fileToUpload" onchange="readURL(this);" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
+                        <button type="submit" name="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
+            </form>
+        </div>
+    </div>
     <form id="regForm" action="includes/apply.inc.php" method="post">
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
             <div class="row">
                 <div class="col-sm-6">
+                    <input type="hidden" value="" name="fileToUpload" id="passport_filename">
                     <div class="form-group">
+                        <label for="usr">Select Session:</label>
+                        <!-- <input type="text" class="form-control validate" name="session"> -->
+                        <select name="session" class="custom-select mb-3">
+                            <option selected value="2019/2020">2019/2020</option>
+                            <option value="2018/2019">2018/2019</option>
+                            <option value="2017/2018">2017/2018</option>
+                        </select>                        
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                <div class="form-group">
                         <label for="usr">Department Desired:</label>
                         <!-- <input type="text" class="form-control validate" name="desire_department"> -->
                         <select name="desire_department" class="custom-select mb-3">
@@ -44,17 +83,7 @@
                             ?>
                         </select>                                            
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="usr">Select Session:</label>
-                        <!-- <input type="text" class="form-control validate" name="session"> -->
-                        <select name="session" class="custom-select mb-3">
-                            <option selected value="2019/2020">2019/2020</option>
-                            <option value="2018/2019">2018/2019</option>
-                            <option value="2017/2018">2017/2018</option>
-                        </select>                        
-                    </div>
+
                 </div>
             </div>
             <p><u>PERSONAL INFORMATION:</u> <small style="color: red;">ALL INFORMATION TO BE COMPLETED IN BLOCK LETTERS

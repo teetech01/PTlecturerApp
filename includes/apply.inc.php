@@ -6,7 +6,7 @@
 	}
 	$session = mysqli_real_escape_string($conn, $_POST['session']);
 	$desire_department = mysqli_real_escape_string($conn, $_POST['desire_department']);
-	$form_no = "SPTSR/LAF/19-20/";	
+	$form_no = "SPTSR/LAF/19-20/".rand();	
 	$surname = mysqli_real_escape_string($conn, $_POST['surname']);
 	$othername = mysqli_real_escape_string($conn, $_POST['othername']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -47,6 +47,7 @@
 	$marked_department = mysqli_real_escape_string($conn, $_POST['marked_department']);
 	$marked_course = mysqli_real_escape_string($conn, $_POST['marked_course']);
 	$marked_period = mysqli_real_escape_string($conn, $_POST['marked_period']);
+	$passport_filename = mysqli_real_escape_string($conn, $_POST['fileToUpload']);
 	// check if input characters are correct
 	if (!preg_match("/^[a-zA-Z]*$/", $surname) || !preg_match("/^[a-zA-Z]*$/", $othername)){
 		echo "<script>alert('Error: Invalid Name Entered !!!'); history.back();</script>";
@@ -62,7 +63,7 @@
 			exit();
 		} else {
 			//insert the data into database
-			$sql = "INSERT INTO applied_lecturers (session, desire_department,form_no,surname, othername, email, phone, home_address,office_address, position, dob, religion,nationality,state,gender,marital,spouse_name,referee_name,referee_address,referee_position,referee_phone,kin_details,institution_attended,from_year,to_year,sch_qualification,sch_award_date,pro_qualification,awarding_body,pro_award_date,work_school,work_department,course_taught,student_category,book_published,journal_publication,invigilated_school,invigilated_program,invigilated_period,marked_school,marked_department,marked_course,marked_period) VALUES ('$session','$desire_department','$form_no','$surname', '$othername', '$email', '$phone', '$home_address', '$office_address','$position', '$dob', '$religion','$nationality','$state', '$gender', '$marital', '$spouse_name', '$referee_name', '$referee_address', '$referee_position', '$referee_phone','$kin_details','$institution_attended','$from_year','$to_year','$sch_qualification','$sch_award_date','$pro_qualification','$awarding_body','$pro_award_date','$work_school','$work_department','$course_taught','$student_category','$book_published','$journal_publication','$invigilated_school','$invigilated_program','$invigilated_period','$marked_school','$marked_department','$marked_course','$marked_period')";
+			$sql = "INSERT INTO applied_lecturers (session, desire_department,form_no,surname, othername, email, phone, home_address,office_address, position, dob, religion,nationality,state,gender,marital,spouse_name,referee_name,referee_address,referee_position,referee_phone,kin_details,institution_attended,from_year,to_year,sch_qualification,sch_award_date,pro_qualification,awarding_body,pro_award_date,work_school,work_department,course_taught,student_category,book_published,journal_publication,invigilated_school,invigilated_program,invigilated_period,marked_school,marked_department,marked_course,marked_period,passport_filename) VALUES ('$session','$desire_department','$form_no','$surname', '$othername', '$email', '$phone', '$home_address', '$office_address','$position', '$dob', '$religion','$nationality','$state', '$gender', '$marital', '$spouse_name', '$referee_name', '$referee_address', '$referee_position', '$referee_phone','$kin_details','$institution_attended','$from_year','$to_year','$sch_qualification','$sch_award_date','$pro_qualification','$awarding_body','$pro_award_date','$work_school','$work_department','$course_taught','$student_category','$book_published','$journal_publication','$invigilated_school','$invigilated_program','$invigilated_period','$marked_school','$marked_department','$marked_course','$marked_period','$passport_filename')";
 			$insquery= mysqli_query($conn, $sql);
 			echo "<pre>" ,print_r($insquery, TRUE),"</pre>";
 			if ($insquery){
