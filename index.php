@@ -26,13 +26,34 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="usr">Department Desired:</label>
-                        <input type="text" class="form-control validate" name="desire_department">
+                        <!-- <input type="text" class="form-control validate" name="desire_department"> -->
+                        <select name="desire_department" class="custom-select mb-3">
+                            <?php
+                                include_once 'includes/dbh.inc.php';
+                                //echo "<option selected value='ACCOUNTANCY'>ACCOUNTANCY</option>";
+                                $sql = "SELECT * FROM sptsr_lect_dept";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0){
+                                        // output data of each row
+                                    while($row = mysqli_fetch_assoc($result)) {
+                                        echo "<option selected value='".$row["dept_name"]."'>".$row["dept_name"]."</option>";
+                                    }
+                                } else {
+                                    echo "<option selected value='ERROR LOADING DEPARTMENT'>ERROR LOADING DEPARTMENT</option>";                                
+                                }
+                            ?>
+                        </select>                                            
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="usr">Session: e.g 2019/2020</label>
-                        <input type="text" class="form-control validate" name="session">
+                        <label for="usr">Select Session:</label>
+                        <!-- <input type="text" class="form-control validate" name="session"> -->
+                        <select name="session" class="custom-select mb-3">
+                            <option selected value="2019/2020">2019/2020</option>
+                            <option value="2018/2019">2018/2019</option>
+                            <option value="2017/2018">2017/2018</option>
+                        </select>                        
                     </div>
                 </div>
             </div>
@@ -58,7 +79,11 @@
                     </div>
                     <div class="form-group">
                         <label for="usr">Religion:</label>
-                        <input type="text" class="form-control validate" name="religion">
+                        <!-- <input type="text" class="form-control validate" name="religion"> -->
+                        <select name="religion" class="custom-select mb-3">
+                            <option selected value="CHRISTIANITY">CHRISTIANITY</option>
+                            <option value="ISLAM">ISLAM</option>
+                        </select>    
                     </div>
                     <div class="form-group">
                         <label for="usr">State of Origin:</label>
@@ -66,7 +91,13 @@
                     </div>
                     <div class="form-group">
                         <label for="usr">Marital Status:</label>
-                        <input type="text" class="form-control validate" name="marital">
+                        <!-- <input type="text" class="form-control validate" name="marital"> -->
+                        <select name="marital" class="custom-select mb-3">
+                            <option selected value="SINGLE">SINGLE</option>
+                            <option value="MARRIED">MARRIED</option>
+                            <option value="DIVORCED">DIVORCED</option>
+                            <option value="WIDOWED">WIDOWED</option>
+                        </select>    
                     </div>
                     <div class="form-group">
                         <label for="usr">Name of Referee:</label>
@@ -93,15 +124,23 @@
                     </div>
                     <div class="form-group">
                         <label for="usr">Date of Birth:</label>
-                        <input type="text" class="form-control validate" name="dob">
+                        <input type="date" class="form-control validate" name="dob">
                     </div>
                     <div class="form-group">
                         <label for="usr">Nationality:</label>
-                        <input type="text" class="form-control validate" name="nationality">
+                        <!-- <input type="text" class="form-control validate" name="nationality"> -->
+                        <select name="nationality" class="custom-select mb-3">
+                            <option selected value="NIGERIAN">NIGERIAN</option>
+                            <option value="OTHERS">OTHERS</option>
+                        </select>    
                     </div>
                     <div class="form-group">
                         <label for="usr">Gender:</label>
-                        <input type="text" class="form-control validate" name="gender">
+                        <!-- <input type="text" class="form-control validate" name="gender"> -->
+                        <select name="gender" class="custom-select mb-3">
+                            <option selected value="MALE">MALE</option>
+                            <option value="FEMALE">FEMALE</option>
+                        </select>    
                     </div>
                     <div class="form-group">
                         <label for="usr">Name of Spouse:</label>
@@ -142,7 +181,12 @@
                     </div>
                     <div class="form-group">
                         <label for="usr">Qualification:</label>
-                        <input type="text" class="form-control validate" name="sch_qualification">
+                        <!-- <input type="text" class="form-control validate" name="sch_qualification"> -->
+                        <select name="sch_qualification" class="custom-select mb-3">
+                            <option selected value="PhD/Msc">PhD/Msc</option>
+                            <option value="MBA/Bsc">MBA/Bsc</option>
+                            <option value="Btech/HND">Btech/HND</option>
+                        </select>    
                     </div>
                     <div class="form-group">
                         <label for="usr">Date of Award:</label>
@@ -163,6 +207,14 @@
                         <label for="usr">Date of Award:</label>
                         <input type="text" class="form-control validate" name="pro_award_date">
                     </div>
+                    <div class="form-group">
+                        <label for="usr">BOOK PUBLISHED: <small style="color: red;">Enter your recent book published</small></label>
+                        <input type="text" class="form-control" name="book_published">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">JOURNAL PUBLICATION: <small style="color: red;">Enter your recent journal publication</small></label>
+                        <input type="text" class="form-control" name="journal_publication">
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,7 +222,7 @@
         <div class="tab">
             <p><u>WORKING EXPERIENCE:</u></p>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-4">
                     <p>Teaching Experience in the last 3 Year:</p>
                     <div class="form-group">
                         <label for="usr">School:</label>
@@ -189,6 +241,42 @@
                         <input type="text" class="form-control validate" name="student_category">
                     </div>
                 </div>
+                <div class="col-sm-4">
+                    <p>Examination Invigilation/Supervision Experience: <small style="color: red;">Enter your recent experience</small></p>
+                    <div class="form-group">
+                        <label for="usr">School:</label>
+                        <input type="text" class="form-control validate" name="invigilated_school">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Program:</label>
+                        <input type="text" class="form-control validate" name="invigilated_program">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Date & Period:</label>
+                        <input type="text" class="form-control validate" name="invigilated_period">
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <p>Conference Marking Experience: <small style="color: red;">Enter your recent experience</small></p>
+                    <div class="form-group">
+                        <label for="usr">School:</label>
+                        <input type="text" class="form-control validate" name="marked_school">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Department:</label>
+                        <input type="text" class="form-control validate" name="marked_department">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Course(s) Marked:</label>
+                        <input type="text" class="form-control validate" name="marked_course">
+                    </div>
+                    <div class="form-group">
+                        <label for="usr">Date & Period:</label>
+                        <input type="text" class="form-control validate" name="marked_period">
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="tab">

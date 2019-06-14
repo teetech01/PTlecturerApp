@@ -38,13 +38,21 @@
     $work_department = mysqli_real_escape_string($conn, $_POST['work_department']);
     $course_taught = mysqli_real_escape_string($conn, $_POST['course_taught']);
 	$student_category = mysqli_real_escape_string($conn, $_POST['student_category']);
-
+	$book_published = mysqli_real_escape_string($conn, $_POST['book_published']);
+	$journal_publication = mysqli_real_escape_string($conn, $_POST['journal_publication']);
+	$invigilated_school = mysqli_real_escape_string($conn, $_POST['invigilated_school']);
+	$invigilated_program = mysqli_real_escape_string($conn, $_POST['invigilated_program']);
+	$invigilated_period = mysqli_real_escape_string($conn, $_POST['invigilated_period']);
+	$marked_school = mysqli_real_escape_string($conn, $_POST['marked_school']);
+	$marked_department = mysqli_real_escape_string($conn, $_POST['marked_department']);
+	$marked_course = mysqli_real_escape_string($conn, $_POST['marked_course']);
+	$marked_period = mysqli_real_escape_string($conn, $_POST['marked_period']);
 	// check if input characters are correct
 	if (!preg_match("/^[a-zA-Z]*$/", $surname) || !preg_match("/^[a-zA-Z]*$/", $othername)){
 		echo "<script>alert('Error: Invalid Name Entered !!!'); history.back();</script>";
 		exit();
 	} else {
-		$check = "SELECT * from_year applied_lecturers WHERE email='$email' AND session='$session'";
+		$check = "SELECT * FROM applied_lecturers WHERE email='$email' AND session='$session'";
 		$result = mysqli_query($conn, $check);
 		if (mysqli_num_rows($result) > 0){
 			$row = mysqli_fetch_assoc($result);
@@ -54,11 +62,11 @@
 			exit();
 		} else {
 			//insert the data into database
-			$sql = "INSERT INTO applied_lecturers (session, desire_department,form_no,surname, othername, email, phone, home_address,office_address, position, dob, religion,nationality,state,gender,marital,spouse_name,referee_name,referee_address,referee_position,referee_phone,kin_details,institution_attended,from_year,to_year,sch_qualification,sch_award_date,pro_qualification,awarding_body,pro_award_date,work_school,work_department,course_taught,student_category) VALUES ('$session','$desire_department','$form_no','$surname', '$othername', '$email', '$phone', '$home_address', '$office_address','$position', '$dob', '$religion','$nationality','$state', '$gender', '$marital', '$spouse_name', '$referee_name', '$referee_address', '$referee_position', '$referee_phone','$kin_details','$institution_attended','$from_year','$to_year','$sch_qualification','$sch_award_date','$pro_qualification','$awarding_body','$pro_award_date','$work_school','$work_department','$course_taught','$student_category')";
+			$sql = "INSERT INTO applied_lecturers (session, desire_department,form_no,surname, othername, email, phone, home_address,office_address, position, dob, religion,nationality,state,gender,marital,spouse_name,referee_name,referee_address,referee_position,referee_phone,kin_details,institution_attended,from_year,to_year,sch_qualification,sch_award_date,pro_qualification,awarding_body,pro_award_date,work_school,work_department,course_taught,student_category,book_published,journal_publication,invigilated_school,invigilated_program,invigilated_period,marked_school,marked_department,marked_course,marked_period) VALUES ('$session','$desire_department','$form_no','$surname', '$othername', '$email', '$phone', '$home_address', '$office_address','$position', '$dob', '$religion','$nationality','$state', '$gender', '$marital', '$spouse_name', '$referee_name', '$referee_address', '$referee_position', '$referee_phone','$kin_details','$institution_attended','$from_year','$to_year','$sch_qualification','$sch_award_date','$pro_qualification','$awarding_body','$pro_award_date','$work_school','$work_department','$course_taught','$student_category','$book_published','$journal_publication','$invigilated_school','$invigilated_program','$invigilated_period','$marked_school','$marked_department','$marked_course','$marked_period')";
 			$insquery= mysqli_query($conn, $sql);
 			echo "<pre>" ,print_r($insquery, TRUE),"</pre>";
 			if ($insquery){
-				echo "<script>alert('Application Successful !!!'); window.location.href='../index.html';</script>";
+				echo "<script>alert('Application Successful !!!'); window.location.href='../index.php';</script>";
 			}else{
 				echo '<script>alert("ERROR: '.mysqli_error($conn).'"); history.back();</script>';
 				exit();
