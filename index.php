@@ -372,7 +372,7 @@
                 upload_certificate = false;
             });
 
-            function upload(target) {
+            function upload(target, cb) {
                 var targetImage = $(target);
                 console.log(targetImage);
                 
@@ -402,7 +402,7 @@
                                              
                     },
                 });
-
+                (typeof cb === 'function') && cb();
             }
 
             $('#nextBtn').on('click', function () {
@@ -416,7 +416,9 @@
                     }
                     else {
                         upload_passport = true;
-                        upload("#fileToUpload");
+                        upload("#fileToUpload", function (){
+                            nextPrev(1);
+                        });
                     }
                 }
                 else if(currentTab == 1)  {
@@ -429,7 +431,9 @@
                     }
                     else {
                         upload_certificate = true;
-                        upload("#certificate");
+                        upload("#certificate", function (){
+                            nextPrev(1);
+                        });
                     }
 
                 }
