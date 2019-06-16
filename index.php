@@ -18,41 +18,34 @@
 
 <body>
     <script>
-        window.readURL = function(input) {
-            console.log(input.files[0].name);
+        window.readURL = function(input,previewer,filename) {
+            console.log(input);
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#blah')
+                    $('#'+previewer)
                         .attr('src', e.target.result)
                         .width(150)
                         .height(150);
-                    $('#passport_filename').attr('value', input.files[0].name);
+                    $('#'+filename).attr('value', input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
     </script>
-        <h1 style="color: blue;"> APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
-
-    <div class="row">
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-11">
-        </div>
-    </div>
+        <h1 style="color: blue;">APPLICATION FORM FOR APPOINTMENT AS A PART-TIME LECTURER : 2019/2020</h1>
     <div class="row">
         <div class="col-sm-8">
         <img style="margin-left: 23%;" id="schLogo" src="logo.png" />
 
         </div>
         <div class="col-sm-4">
-            <form action="includes/upload.php" method="post" enctype="multipart/form-data">
-                        Select image to upload:<br>
-                        <img id="blah" src="#" />
-                        <br><input type="file" name="fileToUpload" onchange="readURL(this);" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
-                        <button type="submit" name="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
-            </form>
+            <!-- <form id="uploadPassForm" action="includes/upload.php" method="post" enctype="multipart/form-data"> -->
+                Select Passport to upload:<br>
+                <img id="passPreview" src="https://via.placeholder.com/100" />
+                <br><input type="file" name="fileToUpload" onchange="readURL(this,'passPreview','passport_filename');" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
+                <!-- <button type="submit" name="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button> -->
+            <!-- </form> -->
         </div>
     </div>
     <form id="regForm" action="includes/apply.inc.php" method="post">
@@ -234,6 +227,13 @@
                         <label for="usr">Date of Award:</label>
                         <input type="text" class="form-control validate" name="sch_award_date">
                     </div>
+                    <div class="form-group">
+                        <input type="hidden" value="" name="credential_filename" id="credential_filename">
+
+                            Select Proof of Qualification to upload:<br>
+                            <img id="credPreview" src="https://via.placeholder.com/100" />
+                            <br><input type="file" name="fileToUpload" onchange="readURL(this,'credPreview','credential_filename');" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <p>PROFESSIONAL QUALIFICATION:</p>
@@ -260,7 +260,6 @@
                 </div>
             </div>
         </div>
-
         <div class="tab">
             <p><u>WORKING EXPERIENCE:</u></p>
             <div class="row">
