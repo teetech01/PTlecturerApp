@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 14, 2019 at 08:38 AM
+-- Generation Time: Jun 15, 2019 at 07:30 AM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -82,6 +82,30 @@ CREATE TABLE `applied_lecturers` (
 INSERT INTO `applied_lecturers` (`id`, `session`, `desire_department`, `form_no`, `surname`, `othername`, `email`, `phone`, `home_address`, `office_address`, `position`, `dob`, `religion`, `nationality`, `state`, `gender`, `marital`, `spouse_name`, `referee_name`, `referee_address`, `referee_position`, `referee_phone`, `kin_details`, `institution_attended`, `from_year`, `to_year`, `sch_qualification`, `sch_award_date`, `pro_qualification`, `awarding_body`, `pro_award_date`, `work_school`, `work_department`, `course_taught`, `student_category`, `book_published`, `journal_publication`, `invigilated_school`, `invigilated_program`, `invigilated_period`, `marked_school`, `marked_department`, `marked_course`, `marked_period`, `passport_filename`, `date_applied`) VALUES
 (1, '2019/2020', 'ANIMAL PRODUCTION TECHNOLOGY', 'SPTSR/LAF/19-20/488919665', 'Adegoke', 'toheeb', 'atoheeb39@gmail.com', '8184613415', '34, Akinhanmi Street,, Ojuelegba, Surulere, Lagos.', 'Kofo Abayomi', 'software developer', '0019-02-08', 'ISLAM', 'NIGERIAN', 'Lagos', 'MALE', 'SINGLE', 'nil', 'Toheeb Adegoke', 'ikd', 'technologist', '899879', 'not avail', 'laspo', '7898', '6787', 'MBA/Bsc', 'june 10', 'msssc', 'nsc', 'july19', 'flklkajf', 'jhdlfjah', 'k;ljdlf', 'kjdflkj', 'fortran', '5g in africa', 'lkjfkld', 'kfdfd', 'jklj;0980', 'j;djf', 'kjfldj', 'kjflajdkl', 'jlkjf997', 'IMG_8287.jpeg', '2019-06-14 08:37:08');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sptsr_lect_dept`
+--
+
+CREATE TABLE `sptsr_lect_dept` (
+  `id` int(11) NOT NULL,
+  `dept_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sptsr_lect_dept`
+--
+
+INSERT INTO `sptsr_lect_dept` (`id`, `dept_name`) VALUES
+(1, 'ACCOUNTANCY'),
+(2, 'AGRIC. and BIO-ENVIRONMENTAL ENGINEERING (POST HARVEST OPTION)'),
+(3, 'AGRIC. EXTENSION AND MANAGEMENT'),
+(4, 'AGRICULTURAL AND BIOENVIRONMENTAL ENGINEERING (POWER AND MACHINERY)'),
+(5, 'AGRICULTURAL AND BIOENVIRONMENTAL ENGINEERING (SOIL AND WATER)'),
+(6, 'ANIMAL PRODUCTION TECHNOLOGY'),
+(7, 'ARCHITECTURAL TECHNOLOGY');
+
 --
 -- Indexes for dumped tables
 --
@@ -93,6 +117,12 @@ ALTER TABLE `applied_lecturers`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sptsr_lect_dept`
+--
+ALTER TABLE `sptsr_lect_dept`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -101,6 +131,12 @@ ALTER TABLE `applied_lecturers`
 --
 ALTER TABLE `applied_lecturers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sptsr_lect_dept`
+--
+ALTER TABLE `sptsr_lect_dept`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

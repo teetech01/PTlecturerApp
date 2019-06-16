@@ -33,9 +33,18 @@
             }
         }
     </script>
-    <h1>APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
+        <h1 style="color: blue;"> APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
+
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-11">
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-8">
+        <img style="margin-left: 23%;" id="schLogo" src="logo.png" />
+
         </div>
         <div class="col-sm-4">
             <form action="includes/upload.php" method="post" enctype="multipart/form-data">
@@ -212,9 +221,13 @@
                         <label for="usr">Qualification:</label>
                         <!-- <input type="text" class="form-control validate" name="sch_qualification"> -->
                         <select name="sch_qualification" class="custom-select mb-3">
-                            <option selected value="PhD/Msc">PhD/Msc</option>
-                            <option value="MBA/Bsc">MBA/Bsc</option>
-                            <option value="Btech/HND">Btech/HND</option>
+                            <option selected value="PhD">PhD</option>
+                            <option value="Msc">Msc</option>
+                            <option value="MBA">MBA</option>
+                            <option value="Bsc">Bsc</option>
+                            <option value="Btech">Btech</option>
+                            <option value="HND">HND</option>
+                            <option value="OTHERS">OTHERS</option>
                         </select>    
                     </div>
                     <div class="form-group">
