@@ -18,20 +18,22 @@
 
 <body>
     <script>
-        window.readURL = function(input) {
-            console.log(input.files[0].name);
+
+        window.readURL = function(input,previewer,filename) {
+            console.log(input);
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    $('#blah')
+                    $('#'+previewer)
                         .attr('src', e.target.result)
                         .width(150)
                         .height(150);
-                    $('#passport_filename').attr('value', input.files[0].name);
+                    $('.'+filename).attr('value', input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
     </script>
         <h1 style="color: blue;"> APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
 
@@ -47,12 +49,13 @@
 
         </div>
         <div class="col-sm-4">
-            <form action="includes/upload.php" method="post" enctype="multipart/form-data">
-                        Select image to upload:<br>
-                        <img id="blah" src="#" />
-                        <br><input type="file" name="fileToUpload" onchange="readURL(this);" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
-                        <button type="submit" name="submitImage" class="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
-            </form>
+            <div class="col-sm-4">
+                Select Passport to upload:<br>
+                <img id="passPreview" src="https://via.placeholder.com/100" />
+                <br><input type="file" name="fileToUpload" onchange="readURL(this,'passPreview','fileToUpload');" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
+        </div>
+
+
         </div>
     </div>
     <form id="regForm" action="includes/apply.inc.php" method="post" enctype="multipart/form-data">
@@ -60,7 +63,7 @@
         <div class="tab">
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="hidden" value="" name="fileToUpload" id="passport_filename">
+                    <input type="hidden" value="" name="fileToUpload" id="fileToUpload_id">
                     <div class="form-group">
                         <label for="usr">Select Session:</label>
                         <!-- <input type="text" class="form-control validate" name="session"> -->
@@ -236,8 +239,8 @@
                     </div>
                     <div class="form-group">
                         <label for="usr">Certification <small style="color: red;"></small></label>
-                        <input type="file" class="form-control" name="certificate">
-                        <button name="submitCertImage" class="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
+                        <input type="file" class="form-control" name="certificate" id="certificate">
+                        <input type="hidden" value="" name="certification" id="certificate_id">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -353,7 +356,7 @@
         <div style="overflow:auto;">
             <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="button" id="nextBtn">Next</button>
             </div>
         </div>
 
@@ -369,15 +372,22 @@
 
     <script src="index.js"></script>
     <script>
+    let upload_passport = false;
+    let upload_certificate = false;
 
         $(function(){
 
             $('.submitImage').on('click', function(e){
                 e.preventDefault();
 
-                var targetImage = $(this).parent().find('[type="file"]');
-                console.log(targetImage);
+               
 
+            });
+
+            function upload(target) {
+                var targetImage = $(target);
+                console.log(targetImage);
+                
                 var fd = new FormData();
                 var files = targetImage[0].files[0];
                 fd.append('file',files);
@@ -392,16 +402,50 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
+                        console.log(response); 
                         try {
-                            res = JSON.parse(response); 
+                            var res = JSON.parse(response); 
+                            $('#' + targetImage.attr('name') + "_id").attr('value', res.url);
                             alert(res.message);
                         } catch (error) {
-                            alert(res);
+                            alert(response);
+                            return false;
                         }
-                        console.log(response);                      
+                                             
                     },
                 });
 
+            }
+
+            $('#nextBtn').on('click', function () {
+                if (currentTab == 0) {
+                    if ($("#fileToUpload").val() == "") {
+                        alert("Please select a passport to upload!");
+                        return false;
+                    }
+                    else if ($("#fileToUpload").val() != "") {
+                        nextPrev(1);
+                    }
+                    else {
+                        upload("#fileToUpload");
+                    }
+                    nextPrev(1);
+                }
+                else if(currentTab == 1)  {
+                    if ($("#certificate").val() == "") {
+                        alert("Please select a certificate to upload!");
+                        return false;
+                    }
+                    else if ($("#certificate").val() != "") {
+                        nextPrev(1);
+                    }
+                    else {
+                        upload("#certificate");
+                    }
+
+                }
+                else
+                    nextPrev(1);
 
             });
 
