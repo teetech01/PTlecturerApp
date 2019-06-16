@@ -45,11 +45,13 @@ function uploadImage() {
         if (move_uploaded_file($_FILES['file']["tmp_name"], $target_file)) {
             $msg =  "The file ". basename( $_FILES['file']["name"]). " has been uploaded.";
             $url = $target_file;
+            $status_code = 1;
         } else {
             $msg =  "Sorry, there was an error uploading your file.";
             $url = "";
+            $status_code = 0;
         }
-        return json_encode(["message"=> $msg, "url"=> $url]);
+        return json_encode(["message"=> $msg, "url"=> $url, "status_code" => $status_code]);
     }
 }
 ?>

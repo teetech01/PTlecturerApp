@@ -2,7 +2,7 @@
 
 $dbServername = "localhost";
 $dbUsername = "root";
-$dbPassword = "root";
+$dbPassword = "password";
 $dbName = "PTlecturerApp";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);

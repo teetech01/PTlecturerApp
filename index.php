@@ -373,12 +373,14 @@
 
             function upload(target, cb) {
                 var targetImage = $(target);
-                //console.log(targetImage);
+                var targetImageName = targetImage.attr('name');
                 var fd = new FormData();
                 var files = targetImage[0].files[0];
                 fd.append('file',files);
-                fd.append('name', targetImage.attr('name'))
-				//console.log(targetImage.attr('name'))
+                fd.append('name',targetImageName);
+
+                console.log(targetImageName)
+                
                 $.ajax({
                     url: 'includes/upload.php',
                     type: 'post',
@@ -389,16 +391,24 @@
                         //console.log(response); 
                         try {
                             var res = JSON.parse(response); 
-                            $('#' + targetImage.attr('name') + "_id").attr('value', res.url);
                             alert(res.message);
+                            if (res.status_code == 0) {
+                                (targetImageName == 'fileToUpload') ? upload_passport = false : upload_certificate = false;
+                            }
+                            else
+                            {
+                                $('#' + targetImage.attr('name') + "_id").attr('value', res.url);
+                                (typeof cb === 'function') && cb();
+                            }
                         } catch (error) {
                             alert(response);
+                            (targetImageName == 'fileToUpload') ? upload_passport = false : upload_certificate = false;
                             return false;
                         }
                                              
                     },
                 });
-                (typeof cb === 'function') && cb();
+                
             }
 
             $('#nextBtn').on('click', function () {
