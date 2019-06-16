@@ -27,7 +27,6 @@
                         .attr('src', e.target.result)
                         .width(150)
                         .height(150);
-
                     // $('#'+filename).attr('value', input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);
@@ -39,16 +38,11 @@
     <div class="row">
         <div class="col-sm-8">
         <img style="margin-left: 23%;" id="schLogo" src="logo.png" />
-
         </div>
         <div class="col-sm-4">
-            <div class="col-sm-4">
-                Select Passport to upload:<br>
-                <img id="passPreview" src="https://via.placeholder.com/100" />
-                <br><input type="file" name="fileToUpload" onchange="readURL(this,'passPreview','fileToUpload');" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
-        </div>
-
-
+            Select Passport to upload:<br>
+            <img id="passPreview" src="https://via.placeholder.com/100" />
+            <br><input type="file" name="fileToUpload" onchange="readURL(this,'passPreview','fileToUpload');" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
         </div>
     </div>
     <form id="regForm" action="includes/apply.inc.php" method="post" enctype="multipart/form-data">
@@ -68,7 +62,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                <div class="form-group">
+                    <div class="form-group">
                         <label for="usr">Department Desired:</label>
                         <!-- <input type="text" class="form-control validate" name="desire_department"> -->
                         <select name="desire_department" class="custom-select mb-3">
@@ -231,10 +225,10 @@
                         <input type="text" class="form-control validate" name="sch_award_date">
                     </div>
                     <div class="form-group">
-                        <label for="usr">Select Proof of Qualification to upload<small style="color: red;"></small></label>
+                        Select Proof of Qualification to upload:<br>
                         <img id="credPreview" src="https://via.placeholder.com/100" />
                             <br>
-                        <input type="file" class="form-control" name="certificate" id="certificate" onchange="readURL(this,'credPreview','certificate');" >
+                        <input type="file" name="certificate" id="certificate" onchange="readURL(this,'credPreview','certificate');" style="padding: 0;width: auto !important;font-size: small;" >
                         <input type="hidden" value="" name="certification" id="certificate_id">
                     </div>
                 </div>
