@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
     <title>APPLICATION FORM</title>
-</head>
+</head> 
 
 <body>
     <script>
@@ -51,11 +51,11 @@
                         Select image to upload:<br>
                         <img id="blah" src="#" />
                         <br><input type="file" name="fileToUpload" onchange="readURL(this);" id="fileToUpload" style="padding: 0;width: auto !important;font-size: small;">
-                        <button type="submit" name="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
+                        <button type="submit" name="submitImage" class="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
             </form>
         </div>
     </div>
-    <form id="regForm" action="includes/apply.inc.php" method="post">
+    <form id="regForm" action="includes/apply.inc.php" method="post" enctype="multipart/form-data">
         <!-- One "tab" for each step in the form: -->
         <div class="tab">
             <div class="row">
@@ -234,6 +234,11 @@
                         <label for="usr">Date of Award:</label>
                         <input type="text" class="form-control validate" name="sch_award_date">
                     </div>
+                    <div class="form-group">
+                        <label for="usr">Certification <small style="color: red;"></small></label>
+                        <input type="file" class="form-control" name="certificate">
+                        <button name="submitCertImage" class="submitImage" style="padding: 5px !important;margin-top: 3px;font-size: small;">Upload Image</button>
+                    </div>
                 </div>
                 <div class="col-sm-6">
                     <p>PROFESSIONAL QUALIFICATION:</p>
@@ -363,6 +368,46 @@
     </form>
 
     <script src="index.js"></script>
+    <script>
+
+        $(function(){
+
+            $('.submitImage').on('click', function(e){
+                e.preventDefault();
+
+                var targetImage = $(this).parent().find('[type="file"]');
+                console.log(targetImage);
+
+                var fd = new FormData();
+                var files = targetImage[0].files[0];
+                fd.append('file',files);
+
+                fd.append('name', targetImage.attr('name'))
+				console.log(targetImage.attr('name'))
+
+                $.ajax({
+                    url: 'includes/upload.php',
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        try {
+                            res = JSON.parse(response); 
+                            alert(res.message);
+                        } catch (error) {
+                            alert(res);
+                        }
+                        console.log(response);                      
+                    },
+                });
+
+
+            });
+
+        });
+
+    </script>
 </body>
 
 </html>
