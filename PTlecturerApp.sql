@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `applied_lecturers`
 --
 
+DROP TABLE IF EXISTS `applied_lecturers`;
 CREATE TABLE `applied_lecturers` (
   `id` int(11) NOT NULL,
   `session` varchar(10) NOT NULL,
@@ -87,7 +88,7 @@ INSERT INTO `applied_lecturers` (`id`, `session`, `desire_department`, `form_no`
 --
 -- Table structure for table `sptsr_lect_dept`
 --
-
+DROP TABLE IF EXISTS `sptsr_lect_dept`;
 CREATE TABLE `sptsr_lect_dept` (
   `id` int(11) NOT NULL,
   `dept_name` varchar(100) NOT NULL

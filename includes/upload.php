@@ -1,5 +1,4 @@
 <?php
-
 echo uploadImage();
 
 function uploadImage() {
@@ -7,7 +6,6 @@ function uploadImage() {
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES['file']["name"]);
     $uploadOk = 1;
-    // $imageFileType = pathinfo($location,PATHINFO_EXTENSION);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) {

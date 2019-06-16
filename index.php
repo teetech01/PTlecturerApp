@@ -18,7 +18,6 @@
 
 <body>
     <script>
-
         window.readURL = function(input,previewer,filename) {
             console.log(input);
             if (input.files && input.files[0]) {
@@ -28,21 +27,15 @@
                         .attr('src', e.target.result)
                         .width(150)
                         .height(150);
-                    $('.'+filename).attr('value', input.files[0].name);
+
+                    // $('#'+filename).attr('value', input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
     </script>
-        <h1 style="color: blue;"> APPLICATION FORM FOR APPOINTMENT AS A LECTURER ON THE (SPTSR) PROGRAMME: 2019/2020</h1>
-
-    <div class="row">
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-11">
-        </div>
-    </div>
+        <h1 style="color: blue;">APPLICATION FORM FOR APPOINTMENT AS A PART-TIME LECTURER : 2019/2020</h1>
     <div class="row">
         <div class="col-sm-8">
         <img style="margin-left: 23%;" id="schLogo" src="logo.png" />
@@ -238,8 +231,10 @@
                         <input type="text" class="form-control validate" name="sch_award_date">
                     </div>
                     <div class="form-group">
-                        <label for="usr">Certification <small style="color: red;"></small></label>
-                        <input type="file" class="form-control" name="certificate" id="certificate">
+                        <label for="usr">Select Proof of Qualification to upload<small style="color: red;"></small></label>
+                        <img id="credPreview" src="https://via.placeholder.com/100" />
+                            <br>
+                        <input type="file" class="form-control" name="certificate" id="certificate" onchange="readURL(this,'credPreview','certificate');" >
                         <input type="hidden" value="" name="certification" id="certificate_id">
                     </div>
                 </div>
@@ -268,7 +263,6 @@
                 </div>
             </div>
         </div>
-
         <div class="tab">
             <p><u>WORKING EXPERIENCE:</u></p>
             <div class="row">
@@ -377,11 +371,11 @@
 
         $(function(){
 
-            $('.submitImage').on('click', function(e){
-                e.preventDefault();
-
-               
-
+            $('#fileToUpload').on('change', function(e){
+                upload_passport = false;
+            });
+            $('#certificate').on('change', function(e){
+                upload_certificate = false;
             });
 
             function upload(target) {
@@ -423,23 +417,24 @@
                         alert("Please select a passport to upload!");
                         return false;
                     }
-                    else if ($("#fileToUpload").val() != "") {
+                    else if ($("#fileToUpload").val() != "" && upload_passport) {
                         nextPrev(1);
                     }
                     else {
+                        upload_passport = true;
                         upload("#fileToUpload");
                     }
-                    nextPrev(1);
                 }
                 else if(currentTab == 1)  {
                     if ($("#certificate").val() == "") {
                         alert("Please select a certificate to upload!");
                         return false;
                     }
-                    else if ($("#certificate").val() != "") {
+                    else if ($("#certificate").val() != "" && upload_certificate) {
                         nextPrev(1);
                     }
                     else {
+                        upload_certificate = true;
                         upload("#certificate");
                     }
 
