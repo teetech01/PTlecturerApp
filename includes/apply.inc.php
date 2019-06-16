@@ -48,7 +48,7 @@
 	$marked_course = mysqli_real_escape_string($conn, $_POST['marked_course']);
 	$marked_period = mysqli_real_escape_string($conn, $_POST['marked_period']);
 	$passport_filename = mysqli_real_escape_string($conn, $_POST['fileToUpload']);
-	$credential_filename = mysqli_real_escape_string($conn, $_POST['credential_filename']);
+	$credential_filename = mysqli_real_escape_string($conn, $_POST['certification']);
 	// check if input characters are correct
 	if (!preg_match("/^[a-zA-Z]*$/", $surname) || !preg_match("/^[a-zA-Z]*$/", $othername)){
 		echo "<script>alert('Error: Invalid Name Entered !!!'); history.back();</script>";
