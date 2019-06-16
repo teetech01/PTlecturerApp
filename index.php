@@ -19,7 +19,6 @@
 <body>
     <script>
         window.readURL = function(input,previewer,filename) {
-            console.log(input);
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
@@ -374,15 +373,12 @@
 
             function upload(target, cb) {
                 var targetImage = $(target);
-                console.log(targetImage);
-                
+                //console.log(targetImage);
                 var fd = new FormData();
                 var files = targetImage[0].files[0];
                 fd.append('file',files);
-
                 fd.append('name', targetImage.attr('name'))
-				console.log(targetImage.attr('name'))
-
+				//console.log(targetImage.attr('name'))
                 $.ajax({
                     url: 'includes/upload.php',
                     type: 'post',
@@ -390,7 +386,7 @@
                     contentType: false,
                     processData: false,
                     success: function(response) {
-                        console.log(response); 
+                        //console.log(response); 
                         try {
                             var res = JSON.parse(response); 
                             $('#' + targetImage.attr('name') + "_id").attr('value', res.url);
@@ -435,7 +431,6 @@
                             nextPrev(1);
                         });
                     }
-
                 }
                 else
                     nextPrev(1);

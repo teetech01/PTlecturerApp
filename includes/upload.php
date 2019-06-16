@@ -19,10 +19,10 @@ function uploadImage() {
         }
     }
     // Check if file already exists
-    if (file_exists($target_file)) {
-        $msg = $msg." Sorry, file already exists.";
-        $uploadOk = 0;
-    }
+    // if (file_exists($target_file)) {
+    //     $msg = $msg." Sorry, file already exists.";
+    //     $uploadOk = 0;
+    // }
     // Check file size
     if ($_FILES['file']["size"] > 500000) {
         $msg = $msg." Sorry, your file is too large.";
