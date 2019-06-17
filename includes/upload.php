@@ -8,7 +8,7 @@ function uploadImage() {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
+    // if(isset($_POST["submit"])) {
         $check = getimagesize($_FILES['file']["tmp_name"]);
         if($check !== false) {
             $msg = $msg."File is an image - " . $check["mime"] . ".";
@@ -17,7 +17,7 @@ function uploadImage() {
             $msg = $msg."File is not an image.";
             $uploadOk = 0;
         }
-    }
+    // }
     // Check if file already exists
     // if (file_exists($target_file)) {
     //     $msg = $msg." Sorry, file already exists.";
