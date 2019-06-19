@@ -50,10 +50,10 @@
 	$passport_filename = mysqli_real_escape_string($conn, $_POST['fileToUpload']);
 	$credential_filename = mysqli_real_escape_string($conn, $_POST['certification']);
 	// check if input characters are correct
-	if (!preg_match("/^[a-zA-Z]*$/", $surname) || !preg_match("/^[a-zA-Z]*$/", $othername)){
-		echo "<script>alert('Error: Invalid Name Entered !!!'); history.back();</script>";
-		exit();
-	} else {
+	// if (!preg_match("/^[a-zA-Z]*$/", $surname) || !preg_match("/^[a-zA-Z]*$/", $othername)){
+	// 	echo "<script>alert('Error: Invalid Name Entered !!!'); history.back();</script>";
+	// 	exit();
+	// } else {
 		$check = "SELECT * FROM applied_lecturers WHERE email='$email' AND session='$session'";
 		$result = mysqli_query($conn, $check);
 		if (mysqli_num_rows($result) > 0){
@@ -74,6 +74,6 @@
 				exit();
 			}
 		}
-	}	
+	//}	
 ?>
 

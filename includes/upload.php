@@ -4,6 +4,7 @@ echo uploadImage();
 function uploadImage() {
     $msg = "";
     $target_dir = "../uploads/";
+    //$target_dir = $_SERVER['DOCUMENT_ROOT']."/uploads/";  //for the online plesk server
     $target_file = $target_dir . basename($_FILES['file']["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
