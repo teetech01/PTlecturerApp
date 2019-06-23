@@ -18,6 +18,10 @@
 
 <body>
     <script>
+        // (function windowClose() {
+        //     alert("APPLICATION CLOSED !!!");
+        //     window.location.replace("https://www.mylaspotech.edu.ng/");
+        // }());
         window.readURL = function(input,previewer,filename) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
